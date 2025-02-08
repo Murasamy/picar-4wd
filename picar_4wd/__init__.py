@@ -226,6 +226,13 @@ def set_motor_power(motor, power):
     elif motor == 4:
         right_rear.set_power(power)
 
+# Peiyang Eddition
+def set_motor_power_peiyang(left_front_power, right_front_power, left_rear_power, right_rear_power):
+    left_front.set_power(left_front_power)
+    right_front.set_power(right_front_power)
+    left_rear.set_power(left_rear_power)
+    right_rear.set_power(right_rear_power)
+
 # def speed_val(*arg):
 #     if len(arg) == 0:
 #         return (left_front_speed() + left_rear_speed() + right_front_speed() + right_rear_speed()) / 4

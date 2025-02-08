@@ -20,14 +20,9 @@ def main():
             fc.forward(speed)
         # if obstacle detected in front, deside to turn left or right
         else:
-            # if obstacle detected on the left side, turn right
-            if tmp[2] < 2 or tmp[3] < 2:
-                fc.turn_right(speed)
-            # if obstacle detected on the right side, turn left
-            elif tmp[0] < 2 or tmp[1] < 2:
-                fc.turn_left(speed)
-            else:
-                fc.turn_right(speed)
+            distance_list = fc.scan_step_distance()
+            
+
 
 if __name__ == "__main__":
     try: 
