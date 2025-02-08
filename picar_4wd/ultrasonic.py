@@ -19,6 +19,7 @@ class Ultrasonic():
         self.min_angle = -self.ANGLE_RANGE/2
         self.scan_list = []
 
+    # return distance in cm
     def get_distance(self):
         self.trig.low()
         time.sleep(0.01)

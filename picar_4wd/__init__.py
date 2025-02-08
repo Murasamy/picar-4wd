@@ -124,6 +124,7 @@ def get_distance_at(angle):
     angle_distance = [angle, distance]
     return distance
 
+# return 0: close, 1: mid, 2: far
 def get_status_at(angle, ref1=35, ref2=10):
     dist = get_distance_at(angle)
     if dist > ref1 or dist == -2:
@@ -136,6 +137,7 @@ def get_status_at(angle, ref1=35, ref2=10):
 def scan_step(ref):
     global scan_list, current_angle, us_step
     current_angle += us_step
+    # scan back and forth
     if current_angle >= max_angle:
         current_angle = max_angle
         us_step = -STEP

@@ -4,7 +4,7 @@ speed = 30
 
 def main():
     while True:
-        scan_list = fc.scan_step(35)
+        scan_list = fc.scan_step(35) # ref1=35: 35cm is the distance to return 2
         if not scan_list:
             continue
 

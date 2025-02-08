@@ -43,11 +43,11 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/sunfounder/picar-4wd',
+    url='https://github.com/Murasamy/picar-4wd-Peiyang',
 
     # Author details
-    author='SunFounder',
-    author_email='service@sunfounder.com',
+    author='Murasamy',
+    author_email='peiyang7@illinois.edu',
 
     # Choose your license
     license='GNU',
@@ -74,7 +74,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='4wd raspberry pi car sunfounder',
+    keywords='4wd raspberry pi car murasamy',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
