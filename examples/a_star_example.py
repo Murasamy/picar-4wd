@@ -17,15 +17,22 @@ class Cell:
         self.h = 0  # Heuristic cost from this cell to destination
 
 # Define the size of the grid
-ROW = 9
-COL = 10
+# ROW = 9
+# COL = 10
 
 # Check if a cell is valid (within the grid)
-def is_valid(row, col):
+def is_valid(row, col, ROW, COL):
+    if row < 0 or col < 0:
+        print("Invalid cell, out of bounds:", row, col)
+    elif row >= ROW or col >= COL:
+        print("Invalid cell, out of bounds", row, col)
+    
     return (row >= 0) and (row < ROW) and (col >= 0) and (col < COL)
 
 # Check if a cell is unblocked
 def is_unblocked(grid, row, col):
+    if grid[row][col] == 1:
+        print("Blocked cell:", row, col)
     return grid[row][col] == 1
 
 # Check if a cell is the destination
@@ -68,8 +75,10 @@ def trace_path(cell_details, dest):
 
 # Implement the A* search algorithm
 def a_star_search(grid, src, dest):
+    ROW = len(grid)
+    COL = len(grid[0])
     # Check if the source and destination are valid
-    if not is_valid(src[0], src[1]) or not is_valid(dest[0], dest[1]):
+    if not is_valid(src[0], src[1], ROW, COL) or not is_valid(dest[0], dest[1], ROW, COL):
         print("Source or destination is invalid")
         return
 
@@ -121,7 +130,7 @@ def a_star_search(grid, src, dest):
             new_j = j + dir[1]
 
             # If the successor is valid, unblocked, and not visited
-            if is_valid(new_i, new_j) and is_unblocked(grid, new_i, new_j) and not closed_list[new_i][new_j]:
+            if is_valid(new_i, new_j, ROW, COL) and is_unblocked(grid, new_i, new_j) and not closed_list[new_i][new_j]:
                 # If the successor is the destination
                 if is_destination(new_i, new_j, dest):
                     # Set the parent of the destination cell
@@ -166,16 +175,16 @@ def main():
         [1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
         [1, 1, 1, 0, 0, 0, 1, 0, 0, 1]
     ]
-    # grid = scan_surroundings(90)
+    grid = scan_surroundings(90)
     # refine the nparray to make it a 2D list
-    # grid = grid.tolist()
+    grid = grid.tolist()
     print(grid)
     
 
     
 
     # Define the source and destination
-    src = [8, 0]
+    src = [0, 99]
     dest = [0, 0]
 
 

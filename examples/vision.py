@@ -13,10 +13,10 @@ def scan_surroundings(angle): # half of angle we want surveyed
     angles = list(range(-angle, angle, 5))
     for curr_angle in angles:
         pass
-        # angle_dist.append(fc.get_distance_at(curr_angle))
+        angle_dist.append(fc.get_distance_at(curr_angle))
     # print(angles)
     # example angle_dist
-    angle_dist = [200, 200, 200, 40, 30, 20, 200, 200, 200,200, 200, 40,  200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,40,  200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,]
+    # angle_dist = [200, 200, 200, 40, 30, 20, 200, 200, 200,200, 200, 40,  200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,40,  200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,]
     if len(angle_dist) == 0:
         print("No data received from ultrasonic sensor.")
         return None
@@ -45,13 +45,15 @@ def scan_surroundings(angle): # half of angle we want surveyed
     # print(surrounding_map)
     kernel = np.ones((5, 5), np.uint8)  # 5x5 kernel for dilation
     padded_map = cv2.dilate(surrounding_map, kernel)
+    # reverse 0 and 1
+    padded_map = 1 - padded_map
 
 
     array_image = (1-padded_map)*255
-    # print(padded_map)
+    print(padded_map)
     img = Image.fromarray(array_image.astype(np.uint8), mode='L')
     img.save('padded_img.png')
-    # img.show()
+    img.show()
 
     return padded_map
 
