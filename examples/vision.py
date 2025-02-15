@@ -53,8 +53,8 @@ def scan_surroundings(angle): # half of angle we want surveyed
     array_image = (1-padded_map)*255
     print(padded_map)
     img = Image.fromarray(array_image.astype(np.uint8), mode='L')
-    img.save('padded_img_new.png')
-    img.show()
+    # img.save('padded_img_new.png')
+    # img.show()
 
     return padded_map
 
