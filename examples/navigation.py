@@ -19,8 +19,8 @@ def left_90(cell_jump):
 
 # adjust the speed of the car
 def left_45(cell_jump):
-    fc.turn_left(10)
-    time.sleep(0.66)
+    fc.turn_left(20)
+    time.sleep(1.14)
     fc.forward(10)
     time.sleep(0.16 * math.sqrt(2)* cell_jump * 1.1)
     fc.stop()
@@ -33,16 +33,16 @@ def forward_0(cell_jump):
 
 # adjust the speed of the car
 def right_45(cell_jump):
-    fc.turn_right(10)
-    time.sleep(0.58)
+    fc.turn_right(20)
+    time.sleep(1.16)
     fc.forward(10)
     time.sleep(0.16 * math.sqrt(2) * cell_jump)
     fc.stop()
 
 # adjust the speed of the car
 def right_90(cell_jump):
-    fc.turn_right(10)
-    time.sleep(1.08)
+    fc.turn_right(20)
+    time.sleep(2.29)
     fc.forward(10)
     time.sleep(0.16 * cell_jump)
     fc.stop()
@@ -67,4 +67,4 @@ def navigation(dest_x, dest_y):
         forward_0(20)
         right_90(50)
 
-left_90(10)
+right_90(10)
