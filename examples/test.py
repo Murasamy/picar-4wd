@@ -1,2 +1,2 @@
 import picar_4wd as fc
-fc.get_distance_at(-90)
+fc.get_distance_at(90)
