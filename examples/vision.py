@@ -1,4 +1,4 @@
-# import picar_4wd as fc
+import picar_4wd as fc
 import numpy as np
 import sys
 from PIL import Image
