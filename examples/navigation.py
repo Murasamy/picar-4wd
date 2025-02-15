@@ -12,7 +12,7 @@ dest_y = int(input("Enter the y coordinate of the destination: "))
 # adjust the speed of the car
 def left_90(cell_jump):
     fc.turn_left(10)
-    time.sleep(1.21)
+    time.sleep(1.41)
     fc.forward(10)
     time.sleep(0.16 * cell_jump)
     fc.stop()
