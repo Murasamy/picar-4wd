@@ -15,7 +15,7 @@ def left_90(cell_jump):
     time.sleep(2.29)
     fc.forward(10)
     time.sleep(0.16 * cell_jump)
-    fc.stop()
+    # fc.stop()
 
 # adjust the speed of the car
 def left_45(cell_jump):
@@ -23,13 +23,13 @@ def left_45(cell_jump):
     time.sleep(1.14)
     fc.forward(10)
     time.sleep(0.16 * math.sqrt(2)* cell_jump * 1.1)
-    fc.stop()
+    # fc.stop()
 
 # adjust the speed of the car
 def forward_0(cell_jump):
     fc.forward(10)
     time.sleep(0.17 * cell_jump)
-    fc.stop()
+    # fc.stop()
 
 # adjust the speed of the car
 def right_45(cell_jump):
@@ -37,7 +37,7 @@ def right_45(cell_jump):
     time.sleep(1.16)
     fc.forward(10)
     time.sleep(0.16 * math.sqrt(2) * cell_jump)
-    fc.stop()
+    # fc.stop()
 
 # adjust the speed of the car
 def right_90(cell_jump):
@@ -45,7 +45,7 @@ def right_90(cell_jump):
     time.sleep(2.32)
     fc.forward(10)
     time.sleep(0.16 * cell_jump)
-    fc.stop()
+    # fc.stop()
 
 action_dict = {
     -2: left_90,
@@ -66,6 +66,7 @@ def navigation(dest_x, dest_y):
     else:
         forward_0(15)
         right_90(20)
+    fc.stop()
 
 navigation(dest_x, dest_y)
 # forward_0(10)
