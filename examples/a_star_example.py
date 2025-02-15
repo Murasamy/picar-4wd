@@ -32,7 +32,8 @@ def is_valid(row, col, ROW, COL):
 # Check if a cell is unblocked
 def is_unblocked(grid, row, col):
     if grid[row][col] == 1:
-        print("Blocked cell:", row, col)
+        # print("Blocked cell:", row, col)
+        pass
     return grid[row][col] == 1
 
 # Check if a cell is the destination
