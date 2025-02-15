@@ -62,10 +62,10 @@ def navigation(dest_x, dest_y):
     print(path_list)
     if dest_x >= 49:
         forward_0(15)
-        left_90(20)
+        right_90(20)
     else:
         forward_0(15)
-        right_90(20)
+        left_90(20)
     fc.stop()
 
 navigation(dest_x, dest_y)
