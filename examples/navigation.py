@@ -6,6 +6,17 @@ import obj_det2
 from vision import scan_surroundings
 from a_star_example import a_star_search
 
+dest_x = int(input("Enter the x coordinate of the destination: "))
+dest_y = int(input("Enter the y coordinate of the destination: "))
+
+import picar_4wd as fc
+import math
+from speed import Speed
+import time
+import obj_det2
+from vision import scan_surroundings
+from a_star_example import a_star_search
+
 # adjust the speed of the car
 def left_90(cell_jump):
     fc.turn_left(10)
@@ -47,103 +58,14 @@ action_dict = {
     2: right_90
 }
 
-
-def navigate(rescan_step = 25):
-    origin = (99, 49)  # origin coor
-    target = (0, 49)    # Goal coor
-    padded_map, path_list = scan_plan(origin, target)
-    current_row, current_col = origin
-    
-
-    test_run = Speed(25)
-    test_run.start()
-    fc.forward(10)
-    current_direction = 2
-    # direction key: 0=full left, 1=left diag, 2=up,3=right diag, 4=full right
-    cell_jump = 1.1
-    reach_target = False
-    error = False
-
-    while True:
-        if error or reach_target or len(path_list) == 1:
-            break # reached the target or no path left
-        for next_i in range(1, len(path_list)):
-            next_row, next_col = path_list[next_i]
-            print("Step:", next_i, " at:", path_list[next_i]," currently at:", current_row, current_col)
-
-            # """Integrating PEOPLE and SIGN Detection Here """ # need to adjust
-            # if next_i%2==0:
-            #     fc.forward(0)
-            #     person, traffic_sign = obj_det2.run_obj_det('efficientdet_lite0.tflite', 0, 640, 480, 4, False)
-            #     while person:
-            #         print("Person ahead, Stop and check again in 2 seconds")
-            #         fc.stop()
-            #         time.sleep(2)
-            #         person, traffic_sign = obj_det2.run_obj_det('efficientdet_lite0.tflite', 0, 640, 480, 4, False)
-            #     if traffic_sign:
-            #         fc.stop()
-            #         print("Stopping for 5 seconds for stop sign")
-            #         time.sleep(5)
-            #     fc.forward(10)
-            # """ END - HUMAN - SIGN Detection"""
-
-            # rescan the map
-            if (origin[0]-current_row) >= rescan_step and current_direction == 2:
-                test_run.deinit()
-                fc.stop()
-                target[0] += (origin[0] - current_row)               
-                target[1] -= (current_col - origin[1])
-                target[0] = min(max(0, target[0]), 99)
-                target[1] = min(max(0, target[1]), 99)
-                print("New target:", target)
-                # target = (0, 49)    # Goal coor
-                padded_map, path_list = scan_plan(origin, target)
-                break
-
-            if next_row == current_row and next_col == current_col - 1:  # NEED TO GO FULL LEFT
-                next_direction = 0
-            elif next_row == current_row - 1 and next_col == current_col - 1:  # NEED TO GO DIAG LEFT
-                next_direction = 1
-            elif next_row == current_row - 1 and next_col == current_col:  # NEED TO GO UP
-                next_direction = 2
-            elif next_row == current_row - 1 and next_col == current_col + 1:  # NEED TO GO DIAG right)
-                next_direction = 3
-            elif next_row == current_row and next_col == current_col + 1:  # NEED TO GO FULL right
-                next_direction = 4
-            else:
-                print("Error: Invalid next direction")
-                error = True
-                break
-                
-            direction_diff = next_direction - current_direction
-            if direction_diff in action_dict:
-                action_dict[(current_direction-next_direction)](cell_jump)
-                current_row = next_row
-                current_col = next_col
-                current_direction = next_direction
-            else:
-                print("Error: Invalid direction change")
-                error = True
-                break
-    test_run.deinit()
-    fc.stop()
-
-
-def scan_plan(origin, target):
-    # scan the environment and plan the route
+def navigation(dest_x, dest_y):
     padded_map = scan_surroundings(90)
     # print(map[target])
-    path_list = a_star_search(padded_map, origin, target)
-
-    return padded_map, path_list
-
-
-def main():
-
-    navigate(rescan_step=25)
-
-if __name__ == "__main__":
-    try: 
-        main()
-    finally: 
-        fc.stop()
+    path_list = a_star_search(padded_map, (99, 49), (dest_x, dest_y))
+    print(path_list)
+    if dest_x >= 49:
+        forward_0(20)
+        left_90(50)
+    else:
+        forward_0(20)
+        right_90(50)
