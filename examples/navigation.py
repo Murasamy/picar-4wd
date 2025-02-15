@@ -61,11 +61,11 @@ def navigation(dest_x, dest_y):
     path_list = a_star_search(padded_map, (99, 49), (dest_x, dest_y))
     print(path_list)
     if dest_x >= 49:
-        forward_0(12)
-        right_90(20)
+        forward_0(10)
+        right_90(10)
     else:
-        forward_0(12)
-        left_90(20)
+        forward_0(10)
+        left_90(10)
     fc.stop()
 
 navigation(dest_x, dest_y)
