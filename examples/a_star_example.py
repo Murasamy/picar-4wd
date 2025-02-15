@@ -84,7 +84,7 @@ def a_star_search(grid, src, dest):
 
     # Check if the source and destination are unblocked
     if not is_unblocked(grid, src[0], src[1]) or not is_unblocked(grid, dest[0], dest[1]):
-        # print("Source or the destination is blocked")
+        print("Source or the destination is blocked")
         return
 
     # Check if we are already at the destination
