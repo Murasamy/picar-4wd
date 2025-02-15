@@ -1,21 +1,13 @@
 import picar_4wd as fc
 import math
-from speed import Speed
+# from speed import Speed
 import time
-import obj_det2
+# import obj_det2
 from vision import scan_surroundings
 from a_star_example import a_star_search
 
 dest_x = int(input("Enter the x coordinate of the destination: "))
 dest_y = int(input("Enter the y coordinate of the destination: "))
-
-import picar_4wd as fc
-import math
-from speed import Speed
-import time
-import obj_det2
-from vision import scan_surroundings
-from a_star_example import a_star_search
 
 # adjust the speed of the car
 def left_90(cell_jump):
@@ -69,3 +61,5 @@ def navigation(dest_x, dest_y):
     else:
         forward_0(20)
         right_90(50)
+
+left_90(10)
