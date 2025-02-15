@@ -42,7 +42,7 @@ def scan_surroundings(angle): # half of angle we want surveyed
         if (0 <= x < 100 and 0 <= y < 100):
             surrounding_map[y][x] = 1
     plt.scatter(x_coor, y_coor)
-    plt.show
+    # plt.show
     # print(surrounding_map)
     kernel = np.ones((5, 5), np.uint8)  # 5x5 kernel for dilation
     padded_map = cv2.dilate(surrounding_map, kernel)
