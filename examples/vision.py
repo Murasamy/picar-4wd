@@ -17,6 +17,7 @@ def scan_surroundings(angle): # half of angle we want surveyed
     # print(angles)
     # example angle_dist
     # angle_dist = [200, 200, 200, 40, 30, 20, 200, 200, 200,200, 200, 40,  200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,40,  200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,]
+    print(angle_dist)
     if len(angle_dist) == 0:
         print("No data received from ultrasonic sensor.")
         return None
