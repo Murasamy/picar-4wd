@@ -67,4 +67,5 @@ def navigation(dest_x, dest_y):
         forward_0(20)
         right_90(50)
 
-navigation(dest_x, dest_y)
+# navigation(dest_x, dest_y)
+forward_0(10)
