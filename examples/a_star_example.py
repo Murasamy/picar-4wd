@@ -24,10 +24,10 @@ class Cell:
 def is_valid(row, col, ROW, COL):
     if row < 0 or col < 0:
         pass
-        print("Invalid cell, out of bounds:", row, col)
+        # print("Invalid cell, out of bounds:", row, col)
     elif row >= ROW or col >= COL:
         pass
-        print("Invalid cell, out of bounds", row, col)
+        # print("Invalid cell, out of bounds", row, col)
     
     return (row >= 0) and (row < ROW) and (col >= 0) and (col < COL)
 
