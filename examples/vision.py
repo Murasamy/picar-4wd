@@ -47,7 +47,7 @@ def scan_surroundings(angle): # half of angle we want surveyed
     kernel = np.ones((5, 5), np.uint8)  # 5x5 kernel for dilation
     padded_map = cv2.dilate(surrounding_map, kernel)
     # reverse 0 and 1
-    # padded_map = 1 - padded_map
+    padded_map = 1 - padded_map
 
 
     array_image = (1-padded_map)*255
